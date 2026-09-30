@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------------------
+# Your facts for filling in applications. The agent answers legal/eligibility
+# and demographic questions ONLY from this file - it never guesses them.
+# Use true / false for yes-no questions. Leave "" if something doesn't apply.
+# Fields marked (required) must be filled before the agent will apply.
+# ---------------------------------------------------------------------------
+
+personal:
+  first_name: ""                # (required)
+  last_name: ""                 # (required)
+  email: ""                     # (required)
+  phone: ""                     # (required) digits only, e.g. 5551234567
+  phone_country: "United States (+1)"
+  address: ""
+  city: ""                      # (required)
+  state: ""                     # (required) e.g. New York
+  zip_code: ""
+  linkedin_url: ""
+  portfolio_url: ""
+  github_url: ""
+
+work_eligibility:
+  authorized_to_work_in_us: null        # (required) true / false
+  require_sponsorship_now: null         # (required) true / false
+  require_sponsorship_future: null      # (required) true / false
+  citizenship_status: ""                # e.g. "U.S. citizen", "Permanent resident", "F-1 OPT"
+  security_clearance: "None"
+  over_18: true
+  willing_to_relocate: false
+  comfortable_commuting: true
+  comfortable_onsite: true
+  ok_with_background_check: true
+  ok_with_drug_test: true
+  has_drivers_license: true
+
+preferences:
+  desired_salary: ""            # yearly USD, number only, e.g. 85000
+  earliest_start: "Two weeks after offer"
+  notice_period_days: 14
+  preferred_work_mode: "Hybrid" # Remote / Hybrid / Onsite
+
+experience:
+  total_years: 0
+  highest_degree: ""            # e.g. "Bachelor's Degree", "Master's Degree"
+  field_of_study: ""
+  university: ""
+  graduation_year: ""
+  # Years of experience per skill/tool. Used for "How many years of experience with X?"
+  skills_years:
+    Python: 0
+    SQL: 0
+    Excel: 0
+
+languages:
+  English: "Native or bilingual"
+
+# Voluntary self-identification (EEO) questions. "Decline to self-identify"
+# is matched to whatever "prefer not to say" option the form offers.
+eeo:
+  gender: "Decline to self-identify"
+  race_ethnicity: "Decline to self-identify"
+  hispanic_latino: "Decline to self-identify"
+  veteran_status: "Decline to self-identify"
+  disability_status: "Decline to self-identify"
+
+# Your own fixed answers. "match" is a phrase (or regex) looked for in the
+# question; the first match wins and is used before anything else.
+custom_answers:
+  - match: "how did you (hear|learn|find)"
+    answer: "Job board"
+  - match: "referr?ed by|referral"
+    answer: "No"

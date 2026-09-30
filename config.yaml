@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------------
+# Job search agent settings. Edit the values, keep the structure.
+# ---------------------------------------------------------------------------
+
+search:
+  # Sites to search: linkedin, indeed, zip_recruiter
+  sites: [linkedin, indeed, zip_recruiter]
+  # Each search term is run on every site. Keep it to a few focused titles.
+  search_terms:
+    - "Data Analyst"
+  location: "New York, NY"      # city/state, or "United States" for nationwide
+  distance_miles: 50
+  remote_only: false            # true = only remote jobs
+  job_type: fulltime            # fulltime | parttime | contract | internship | null
+  hours_old: 72                 # only jobs posted in the last N hours (null = any age)
+  results_wanted: 25            # per site, per search term
+
+# Cheap keyword filters applied BEFORE the AI scores anything (saves money).
+# All matching is case-insensitive.
+filters:
+  title_must_include: []        # e.g. ["analyst", "analytics"]; empty = accept any title
+  title_exclude: ["senior", "sr.", "sr ", "principal", "staff", "director", "head of", "vp", "intern"]
+  company_blocklist: []         # e.g. ["Revature", "Some Staffing Agency"]
+  description_exclude: []       # e.g. ["active secret clearance", "must be a u.s. citizen"]
+  min_salary: 0                 # yearly USD; only applied when a listing shows a salary
+
+# Claude models. claude-opus-5 is the most capable; claude-sonnet-5 is ~60% cheaper.
+models:
+  scoring: claude-opus-5        # scores every job found (the bulk of the cost)
+  writing: claude-opus-5        # writes cover letters
+  answers: claude-opus-5        # answers application questions
+
+apply:
+  min_score: 75                 # only apply to jobs scored at least this (0-100)
+  daily_caps:                   # max applications per site per day
+    linkedin: 15
+    indeed: 10
+    zip_recruiter: 10
+  click_delay_seconds: [1.5, 6.0]           # random pause after each click / page change
+  field_delay_seconds: [0.5, 1.5]           # random pause after filling each field
+  between_applications_seconds: [30, 90]    # random pause between two applications
+  linkedin_follow_company: false            # untick "Follow <company>" on LinkedIn
+  # Where the logged-in browser profiles are kept. Default is outside OneDrive
+  # (%LOCALAPPDATA%\jobagent\browser_profiles) so OneDrive doesn't lock Chrome's files.
+  browser_profiles_dir: null

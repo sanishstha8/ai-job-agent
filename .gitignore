@@ -1,0 +1,11 @@
+.env
+profile.yaml
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+output/
+inputs/*
+!inputs/README.md
+!inputs/target_job.example.md
